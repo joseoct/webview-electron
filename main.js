@@ -5,9 +5,9 @@ let win;
 function createWindow () {
   
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    frame: false, 
+    width: 650,
+    height: 850,
+    frame: false,
     alwaysOnTop: true,
     webPreferences: {
       nodeIntegration: true
@@ -22,12 +22,17 @@ function toggleDevTools () {
 }
 
 function setFullScreen () {
-  win.fullScreen()
+  win.maximize()
+}
+
+function resize () {
+  win.setSize(650, 850)
 }
 
 function createShortcuts () {
   globalShortcut.register('CmdOrCtrl+J', toggleDevTools);
   globalShortcut.register('CmdOrCtrl+A', setFullScreen); 
+  globalShortcut.register('CmdOrCtrl+S', resize); 
 }
 
 app.whenReady()
