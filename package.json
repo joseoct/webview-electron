@@ -4,7 +4,7 @@
   "main": "main.js",
   "license": "MIT",
   "scripts": {
-    "start": "electron src/main.js",
+    "start": "electron .",
     "dist:linux": "electron-builder --linux"
   },
   "author": "Jose <joseoctavioconti@hotmail.com>",

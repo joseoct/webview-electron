@@ -13,6 +13,7 @@ function createWindow () {
       nodeIntegration: true
     }
   })
+  
   win.loadURL('http://localhost:3000/');
 }
 
@@ -20,8 +21,13 @@ function toggleDevTools () {
   win.webContents.toggleDevTools();
 }
 
+function setFullScreen () {
+  win.fullScreen()
+}
+
 function createShortcuts () {
   globalShortcut.register('CmdOrCtrl+J', toggleDevTools);
+  globalShortcut.register('CmdOrCtrl+A', setFullScreen); 
 }
 
 app.whenReady()
