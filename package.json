@@ -4,9 +4,23 @@
   "main": "main.js",
   "license": "MIT",
   "scripts": {
-    "start": "electron ."
+    "start": "electron src/main.js",
+    "dist:linux": "electron-builder --linux"
   },
+  "author": "Jose <joseoctavioconti@hotmail.com>",
   "devDependencies": {
-    "electron": "^9.0.0"
+    "electron": "^9.0.0",
+    "electron-builder": "^22.6.1"
+  },
+  "build": {
+    "appId": "webview",
+    "linux": {
+      "target": [
+        "deb",
+        "snap",
+        "rpm"
+      ],
+      "category": "Utility"
+    }
   }
 }
