@@ -9,6 +9,7 @@ function createWindow () {
     height: 850,
     frame: false,
     alwaysOnTop: true,
+    
     webPreferences: {
       nodeIntegration: true
     }
@@ -22,17 +23,21 @@ function toggleDevTools () {
 }
 
 function setFullScreen () {
+  if (win.isMaximized()) {
+    win.setSize(650, 850);
+    return;
+  }
   win.maximize()
 }
 
-function resize () {
-  win.setSize(650, 850)
+function reloadPage () {
+  win.reload();
 }
 
 function createShortcuts () {
   globalShortcut.register('CmdOrCtrl+J', toggleDevTools);
-  globalShortcut.register('CmdOrCtrl+A', setFullScreen); 
-  globalShortcut.register('CmdOrCtrl+S', resize); 
+  globalShortcut.register('Alt+A', setFullScreen); 
+  globalShortcut.register('F5', reloadPage); 
 }
 
 app.whenReady()
