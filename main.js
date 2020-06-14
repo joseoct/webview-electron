@@ -1,59 +1,59 @@
-const { app, BrowserWindow, globalShortcut } = require('electron')
+const { app, BrowserWindow, globalShortcut } = require('electron');
 
 let win;
 
-function createWindow () {
-  
+function createWindow() {
   win = new BrowserWindow({
     width: 650,
     height: 850,
     frame: false,
     alwaysOnTop: true,
-    
+    fullscreen: false,
     webPreferences: {
-      nodeIntegration: true
-    }
-  })
-  
+      nodeIntegration: true,
+    },
+  });
+
   win.loadURL('http://localhost:3000/');
 }
 
-function toggleDevTools () {
+function toggleDevTools() {
   win.webContents.toggleDevTools();
 }
 
-function setFullScreen () {
+function setFullScreen() {
   if (win.isMaximized()) {
-    win.setSize(650, 850);
-    return;
+    win.restore();
+  } else {
+    win.maximize();
   }
-  win.maximize()
 }
 
-function reloadPage () {
+function minimize() {
+  win.minimize();
+}
+
+function reloadPage() {
   win.reload();
 }
 
-function createShortcuts () {
+function createShortcuts() {
   globalShortcut.register('CmdOrCtrl+J', toggleDevTools);
-  globalShortcut.register('Alt+A', setFullScreen); 
-  globalShortcut.register('F5', reloadPage); 
+  globalShortcut.register('Alt+A', setFullScreen);
+  globalShortcut.register('Alt+S', minimize);
+  globalShortcut.register('F5', reloadPage);
 }
 
-app.whenReady()
-  .then(createWindow)
-  .then(createShortcuts)
+app.whenReady().then(createWindow).then(createShortcuts);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
-})
+});
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
+    createWindow();
   }
-})
-
-
+});
