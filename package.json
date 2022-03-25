@@ -9,7 +9,7 @@
   },
   "author": "Jose <joseoctavioconti@gmail.com>",
   "devDependencies": {
-    "electron": "^9.0.0",
+    "electron": "^13.6.6",
     "electron-builder": "^22.6.1"
   },
   "build": {
