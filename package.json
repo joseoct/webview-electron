@@ -16,9 +16,7 @@
     "appId": "WebView",
     "linux": {
       "target": [
-        "deb",
-        "snap",
-        "rpm"
+        "deb"
       ],
       "category": "Utility"
     }

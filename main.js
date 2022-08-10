@@ -6,7 +6,8 @@ function createWindow() {
   win = new BrowserWindow({
     width: 650,
     height: 850,
-    frame: false,
+    frame: true,
+    autoHideMenuBar: true,
     alwaysOnTop: true,
     fullscreen: false,
     webPreferences: {
